@@ -10,7 +10,7 @@ docker run --rm -p 9292:9292 -v [YOUR_PATH/config.json]:/app/config.json graphit
 
 ```
 {
-  "graphite_url": "YOUR_GRAPHITE_PATH",
+  "graphite_url": "YOUR_GRAPHITE_URL",
   "alerts": [
     {
       "target": "jobs.message_1",
@@ -19,7 +19,7 @@ docker run --rm -p 9292:9292 -v [YOUR_PATH/config.json]:/app/config.json graphit
     },
     {
       "target": "jobs.mailer",
-      "check_type": "is_more_than",
+      "check_type": "is_less_than",
       "threshold_value": 100
     },
     {
