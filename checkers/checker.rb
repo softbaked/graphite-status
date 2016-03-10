@@ -17,7 +17,7 @@ module Checkers
     end
 
     def reformat_data(data_points)
-      data_points.map { |data_point| data_point[0] ? data_point[0] : 0 }
+      data_points.map { |data_point| data_point.first || 0 }
     end
 
     def previous_range
