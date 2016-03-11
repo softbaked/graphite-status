@@ -2,7 +2,7 @@ class GraphiteNoti < Sinatra::Base
 
   get '/' do
     settings.config_alert.alerts.each do |alert|
-      response    = HTTParty.get("#{settings.config_alert.graphite_url}/render?format=json&target=#{alert.target}&from=-#{previous_range}min&until=now")
+      response    = HTTParty.get("#{settings.config_alert.graphite_url}/render?format=json#{alert.query}&from=-#{previous_range}min&until=now")
       is_abnormal = false
 
       response.each do |data|

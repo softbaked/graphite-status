@@ -18,7 +18,7 @@ module Checkers
 
     def is_dead(data_points)
       points = reformat_data(data_points)
-      points.all?(&:blank?)
+      points.all?(&:zero?)
     end
 
     def reformat_data(data_points)
