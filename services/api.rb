@@ -11,6 +11,8 @@ class GraphiteNoti < Sinatra::Base
           is_more_than_threshold(alert.threshold_value, data['datapoints'])
         when 'is_less_than'
           is_regression_threshold(alert.threshold_value, data['datapoints'])
+        when 'is_growth'
+          is_growth(alert.threshold_value, data['datapoints'])
         when 'is_dead'
           is_dead(data['datapoints'])
         end

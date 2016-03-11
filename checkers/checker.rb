@@ -11,6 +11,11 @@ module Checkers
       points.all? { |p| p <= threshold_value }
     end
 
+    def is_growth(threshold_value, data_points)
+      points = reformat_data(data_points)
+      (points.last - points.first) >= threshold_value
+    end
+
     def is_dead(data_points)
       points = reformat_data(data_points)
       points.all?(&:blank?)
