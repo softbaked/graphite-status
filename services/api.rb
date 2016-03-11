@@ -18,9 +18,8 @@ class GraphiteNoti < Sinatra::Base
         end
 
         if is_abnormal
-          p "Please check #{data['target']} : #{alert.check_type}"
-          p data['datapoints']
-          halt 500
+          p "Please check #{data['target']} : #{alert.check_type} #{alert.threshold_value}"
+          halt 500, "Please check #{data['target']} : #{alert.check_type} #{alert.threshold_value}"
           break
         end
       end
