@@ -27,11 +27,11 @@ module Checkers
 
     def previous_range
       case Time.now.hour
-      when 6..23
+      when 8..21
         5
-      when 24..1
+      when 22..24
         10
-      when 2..5
+      when 1..7
         60
       end
     end
