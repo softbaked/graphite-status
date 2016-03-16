@@ -26,7 +26,8 @@ module Checkers
     end
 
     def previous_range(time_ranges)
-      case Time.now.hour
+      # Hack fix GMT+7 Timezone
+      case Time.now.hour + 7
       when 9..21
         time_ranges['morning']
       when 22..24

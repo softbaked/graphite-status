@@ -6,15 +6,19 @@ class GraphiteNoti < Sinatra::Base
       is_abnormal = false
 
       response.each do |data|
-        is_abnormal = case alert.check_type
-        when 'is_more_than'
-          is_more_than_threshold(alert.threshold_value, data['datapoints'])
-        when 'is_less_than'
-          is_regression_threshold(alert.threshold_value, data['datapoints'])
-        when 'is_growth'
-          is_growth(alert.threshold_value, data['datapoints'])
-        when 'is_dead'
-          is_dead(data['datapoints'])
+        if data['datapoints'].nil?
+          is_abnormal = true
+        else
+          is_abnormal = case alert.check_type
+          when 'is_more_than'
+            is_more_than_threshold(alert.threshold_value, data['datapoints'])
+          when 'is_less_than'
+            is_regression_threshold(alert.threshold_value, data['datapoints'])
+          when 'is_growth'
+            is_growth(alert.threshold_value, data['datapoints'])
+          when 'is_dead'
+            is_dead(data['datapoints'])
+          end
         end
 
         if is_abnormal
