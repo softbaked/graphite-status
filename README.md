@@ -9,7 +9,9 @@ docker run softbaked/graphite-status:init --rm -p 9292:9292 -v [YOUR_PATH/config
 ### Exmaple Config
 
 9 .. 21 = morning
+
 22 .. 24 = before_midnight
+
 1 .. 8 = midnight
 
 
