@@ -25,14 +25,14 @@ module Checkers
       data_points.map { |data_point| data_point.first || 0 }
     end
 
-    def previous_range
+    def previous_range(time_ranges)
       case Time.now.hour
-      when 8..21
-        5
+      when 9..21
+        time_ranges['morning']
       when 22..24
-        10
+        time_ranges['before_midnight']
       when 1..7
-        60
+        time_ranges['midnight']
       end
     end
   end

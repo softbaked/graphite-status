@@ -2,7 +2,7 @@ class GraphiteNoti < Sinatra::Base
 
   get '/' do
     settings.config_alert.alerts.each do |alert|
-      response    = HTTParty.get("#{settings.config_alert.graphite_url}/render?format=json#{alert.query}&from=-#{previous_range}min&until=now")
+      response    = HTTParty.get("#{settings.config_alert.graphite_url}/render?format=json#{alert.query}&from=-#{previous_range(alert.time_ranges)}min&until=now")
       is_abnormal = false
 
       response.each do |data|
@@ -18,8 +18,8 @@ class GraphiteNoti < Sinatra::Base
         end
 
         if is_abnormal
-          p "Please check #{data['target']} : #{alert.check_type} #{alert.threshold_value}"
-          halt 500, "Please check #{data['target']} : #{alert.check_type} #{alert.threshold_value}"
+          p "[#{Time.now}] Please check #{data['target']} : #{alert.check_type} #{alert.threshold_value}"
+          halt 500, "[#{Time.now}] Please check #{data['target']} : #{alert.check_type} #{alert.threshold_value}"
           break
         end
       end
