@@ -2,7 +2,7 @@
 
 ```
 docker build -t graphite-noti .
-docker run softbaked/graphite-status:init --rm -p 9292:9292 -v [YOUR_PATH/config.json]:/app/config.json graphite-status
+docker run --rm -d -p 9292:9292 -v [YOUR_PATH/config.json]:/app/config.json softbaked/graphite-status
 ```
 
 
