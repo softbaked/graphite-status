@@ -7,6 +7,7 @@ class GraphiteNoti < Sinatra::Base
 
       response.each do |data|
         if data['datapoints'].nil?
+          p "#{alert.query}" # Debugging
           is_abnormal = true
         else
           is_abnormal = case alert.check_type
@@ -22,8 +23,8 @@ class GraphiteNoti < Sinatra::Base
         end
 
         if is_abnormal
-          p "[#{Time.now}] Please check #{data['target']} : #{alert.check_type} #{alert.threshold_value}"
-          halt 500, "[#{Time.now}] Please check #{data['target']} : #{alert.check_type} #{alert.threshold_value}"
+          p "Please check #{data['target']} : #{alert.check_type} #{alert.threshold_value}"
+          halt 500, "Please check #{data['target']} : #{alert.check_type} #{alert.threshold_value}"
           break
         end
       end
