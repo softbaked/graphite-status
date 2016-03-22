@@ -7,7 +7,7 @@ class GraphiteNoti < Sinatra::Base
 
       response.each do |data|
         if data['datapoints'].nil?
-          p "NIL :#{alert.query}" # Debugging
+          p "NIL :#{data['target']}" # Debugging
         else
           is_abnormal = case alert.check_type
           when 'is_more_than'
