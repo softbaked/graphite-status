@@ -20,13 +20,13 @@ docker run --rm -d -p 9292:9292 -v [YOUR_PATH/config.json]:/app/config.json soft
   "graphite_url": "YOUR_GRAPHITE_URL",
   "alerts": [
     {
-      "target": "jobs.message_1",
-      "check_type": "is_more_than",
-      "threshold_value": 100,
+      "target": "jobs.message_1", // คือชื่อของ queue ที่อยู่ใน statsd ที่เราต้องการ m
+      "check_type": "is_more_than", // เงื่อนไขในการเชคต้อง มากกว่าหรือน้อยกว่า ค่า threshold_value ถ้าถูกต้องตามเงื่อนไขจะหมายถึง ระบบมีปัญหา 
+      "threshold_value": 100, // ค่าที่ใช้ชี้
       "time_ranges" : {
-        "morning": 5,
-        "before_midnight": 15,
-        "midnight": 60
+        "morning": 5, // จะเอาข้อมูลมา 5 นาทีก่อนหน้าแล้วประมวลผล ว่าระบบี้มีปัญหาไหม
+        "before_midnight": 15, // ในช่วงเวลา กลางดึก จะเอาข้อมูล 10 นาทีก่อนหน้าแล้วมาประมวลผล
+        "midnight": 60 // ในช่วงเวลา กลางคืน - เช้า จะเอาข้อมูล 60 นาทีก่อนหน้ามาประมวลผล
       }
     },
     {
