@@ -1,0 +1,63 @@
+{
+  "graphite_url": "http://services.page365.net",
+  "alerts": [
+    {
+      "query": "&target=jobs.block",
+      "check_type": "is_more_than",
+      "threshold_value": 300,
+      "time_ranges" : {
+        "morning": 10,
+        "before_midnight": 15,
+        "midnight": 60
+      }
+    },
+    {
+      "query": "&target=jobs.low_*",
+      "check_type": "is_more_than",
+      "threshold_value": 200,
+      "time_ranges" : {
+        "morning": 10,
+        "before_midnight": 15,
+        "midnight": 60
+      }
+    },
+    {
+      "query": "&target=jobs.high_*&target=sms.sent.failure.count",
+      "check_type": "is_more_than",
+      "threshold_value": 50,
+      "time_ranges" : {
+        "morning": 15,
+        "before_midnight": 30,
+        "midnight": 60
+      }
+    },
+    {
+      "query": "&target=orders.paid.volume.count&target=poster.success.line_message.count&target=poster.success.private_message.count&target=poster.success.comment.count&target=poller.new.line_message.count&target=poller.new.post.count&target=poller.new.private_message.count&target=poller.new.comment.count",
+      "check_type": "is_dead",
+      "time_ranges" : {
+        "morning": 10,
+        "before_midnight": 30,
+        "midnight": 90
+      }
+    },
+    {
+      "query": "&target=poller.sparrow*.count",
+      "check_type": "is_dead",
+      "time_ranges" : {
+        "morning": 10,
+        "before_midnight": 15,
+        "midnight": 60
+      }
+    },
+    {
+      "query": "&target=jobs.failure",
+      "check_type": "is_growth",
+      "threshold_value": 50,
+      "time_ranges" : {
+        "morning": 10,
+        "before_midnight": 30,
+        "midnight": 60
+      }
+    }
+  ]
+}
