@@ -41,7 +41,7 @@ docker run --rm -d -p 9393:9393 -v [YOUR_PATH/config.json]:/app/config.json soft
     },
     {
       "target": "jobs.event*",
-      "check_type": "is_dead",
+      "check_type": "is_dead", // is_dead คือถ้าค่าเป็น 0 จะหมายถึง service ตาย
       "time_ranges" : {
         "morning": 15,
         "before_midnight": 35,
@@ -51,3 +51,8 @@ docker run --rm -d -p 9393:9393 -v [YOUR_PATH/config.json]:/app/config.json soft
   ]
 }
 ```
+
+
+#### Tips เมื่อนำ project ไปรันที่ใหม่
+- ถ้าเอาไปรันที่ใหม่อย่าลืมดูเรื่อง Docker EXPOSE อะไรให้ได้ดีแล้วก็ Security Group ที่ AWS
+- ตั้งค่า Endpoint ที่ PINGDOM ใหม่ด้วยนะ
