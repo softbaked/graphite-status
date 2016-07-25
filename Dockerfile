@@ -2,7 +2,7 @@ FROM ruby:2.2.1
 
 RUN apt-get update
 
-EXPOSE 9292
+EXPOSE 9393
 
 ENV APP_HOME /app
 WORKDIR $APP_HOME

@@ -2,7 +2,7 @@
 
 ```
 docker build -t graphite-noti .
-docker run --rm -d -p 9292:9292 -v [YOUR_PATH/config.json]:/app/config.json softbaked/graphite-status
+docker run --rm -d -p 9393:9393 -v [YOUR_PATH/config.json]:/app/config.json softbaked/graphite-status
 ```
 
 
@@ -21,7 +21,7 @@ docker run --rm -d -p 9292:9292 -v [YOUR_PATH/config.json]:/app/config.json soft
   "alerts": [
     {
       "target": "jobs.message_1", // คือชื่อของ queue ที่อยู่ใน statsd ที่เราต้องการ m
-      "check_type": "is_more_than", // เงื่อนไขในการเชคต้อง มากกว่าหรือน้อยกว่า ค่า threshold_value ถ้าถูกต้องตามเงื่อนไขจะหมายถึง ระบบมีปัญหา 
+      "check_type": "is_more_than", // เงื่อนไขในการเชคต้อง มากกว่าหรือน้อยกว่า ค่า threshold_value ถ้าถูกต้องตามเงื่อนไขจะหมายถึง ระบบมีปัญหา
       "threshold_value": 100, // ค่าที่ใช้ชี้
       "time_ranges" : {
         "morning": 5, // จะเอาข้อมูลมา 5 นาทีก่อนหน้าแล้วประมวลผล ว่าระบบี้มีปัญหาไหม
