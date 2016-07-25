@@ -9,4 +9,4 @@ WORKDIR $APP_HOME
 ADD ./ $APP_HOME
 
 RUN bundle check || bundle install
-CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0"]
+CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "9393"]
